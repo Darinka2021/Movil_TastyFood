@@ -4,51 +4,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginBottom="10dp"
-        tools:ignore="MissingConstraints">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:padding="5dp"
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <TextView
                     android:id="@+id/lblCodCat"
                     android:layout_width="25dp"
+                    android:visibility="gone"
                     android:layout_height="wrap_content"
                     android:text="cod">
                 </TextView>
                 <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="250dp"
-                    android:padding="3dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="10dp"
                     android:orientation="vertical">
-
                     <TextView
                         android:id="@+id/lblNomCat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/tasty_negro"
                         android:text="lbl_nombre_categoria"
-                        android:textSize="20dp">
+                        android:textSize="18dp"
+                        android:padding="5dp">
                     </TextView>
                     <TextView
                         android:id="@+id/lblEstCat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="lbl_estado_categoria"
+                        android:visibility="gone"
                         android:textSize="15dp">
                     </TextView>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
-
-
             </androidx.appcompat.widget.LinearLayoutCompat>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
