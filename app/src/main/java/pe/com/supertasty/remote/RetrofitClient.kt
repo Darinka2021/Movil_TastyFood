@@ -8,7 +8,8 @@ object RetrofitClient {
     private var retrofit:Retrofit?=null
     fun getConnection(url:String?):Retrofit?{
         if(retrofit==null){
-            retrofit=Retrofit.Builder().baseUrl(url)
+            retrofit=Retrofit.Builder()
+                .baseUrl(url)
                 .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
                 .build()
         }

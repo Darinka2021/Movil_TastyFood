@@ -22,5 +22,8 @@ class CategoriaEntity {
         this.estado = estado
     }
 
+    fun nombreCategoria():String{
+        return this.nombre
+    }
 
 }

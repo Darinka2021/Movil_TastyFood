@@ -50,4 +50,6 @@ class CategoriaAdapter (context: Context?, val lista:List<CategoriaEntity>?): Ba
         return vista!!
     }
 
+
+
 }

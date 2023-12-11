@@ -1,57 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/lblCodCli"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="lblCodCli" />
+
             <TextView
                 android:id="@+id/lblEstCli"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="lblEstCli" />
-
-            <TextView
-                android:id="@+id/lblCorCli"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="lblCorCli" />
-            <TextView
-                android:id="@+id/lblNomCli"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="lblNomCli" />
-            <TextView
-                android:id="@+id/lblUseCli"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="lblUseCli" />
-            <TextView
-                android:id="@+id/lblPasCli"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="lblPasCli" />
-
-
-
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/lblNomCli"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="lblNomCli" />
+
+        <TextView
+            android:id="@+id/lblCorCli"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="lblCorCli" />
+
+        <TextView
+            android:id="@+id/lblUseCli"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="lblUseCli" />
+
+        <TextView
+            android:id="@+id/lblPasCli"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="lblPasCli" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
