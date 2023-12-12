@@ -29,7 +29,7 @@ import retrofit2.Response
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
 class CategoriaFragment : Fragment() {
-
+//cambios 296
     //creramos un objeto de la entidad
     private val objcategoria=CategoriaEntity()
     //una variable para trabajar con el servicio
