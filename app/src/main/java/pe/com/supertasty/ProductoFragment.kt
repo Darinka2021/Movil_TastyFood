@@ -16,6 +16,8 @@ import kotlinx.coroutines.launch
 
 
 import pe.com.apptienditarest.util.Utilidad
+import pe.com.supertasty.Adapter.CategoriaAdapter
+import pe.com.supertasty.Adapter.CategoriaComboAdapter
 
 
 import pe.com.supertasty.Adapter.ProductoAdapter
@@ -43,27 +45,22 @@ class ProductoFragment : Fragment() {
     private var categoriaService:CategoriaService? = null
     //lista de tipo CategoriaEntity
     private var registroproducto:List<ProductoEntity>?=null
+    private var registrocategoria:List<CategoriaEntity>?=null
     //creamos un objeto de la clase Utilidad
     private val objutilidad= Utilidad()
     //declaramos variables
-    var cod=0
-    var cant=1
-    var nom=""
-    var pre=0.0
-    var cat = arrayListOf<CategoriaEntity>()
-    var est=false
+    private var cod=0L
+    private var cant=0
+    private var nom=""
+    private var pre=0.0
+    private var cat = 0L
+    private var est=false
+    private var fila= -1
+    private var indice = -1
+    //posicion en combocategoria
+    private var pos=-1
     //creamos una varaiable para actualizar el fragmento
     var ft: FragmentTransaction?=null
-
-
-    /*-----------------llenando al spinner-------------*/
-
-    //private var adaptador_categoria :ArrayAdapter<CategoriaEntity>? = null
-    private var listado_categoria: MutableList<CategoriaEntity>? = null
-
-    /*------------------------------------------*/
-
-
 
 
     private var _binding: FragmentProductoBinding? = null
@@ -78,24 +75,34 @@ class ProductoFragment : Fragment() {
     ): View? {
 
         _binding = FragmentProductoBinding.inflate(inflater, container, false)
+
         val context=requireContext()
-
-
-
-        //creamos el registro de categoria
+        //inicializamos registroproducto
         registroproducto=ArrayList()
+        registrocategoria=ArrayList()
         //implementamos el servicio
         productoService= Api.productoService
+        categoriaService = Api.categoriaService
         //mostramos la categoria
+
+        cargarComboCategoria(context)
         MostrarProducto(context)
 
+
         //evento boton registrar
-        /*binding.btnRegistrarPro.setOnClickListener {
+        binding.btnRegistrarPro.setOnClickListener {
             if(binding.txtNomPro.text.toString().equals("")){
-                objutilidad.MostrarAlerta(context,"Registro Categoria","Ingrese el nombre",false)
+                objutilidad.MostrarAlerta(context,"Registro Producto","Ingrese el nombre",false)
                 binding.txtNomPro.requestFocus()
-            }else{
+            }
+            else if(binding.cboCategoria.selectedItemPosition == -1){
+            objutilidad.MostrarAlerta(context,"Registro Producto","Seleccione la categoria",false)
+            binding.txtNomPro.requestFocus()
+            }
+            else{
                 //capturando valores
+                pos= binding.cboCategoria.selectedItemPosition
+                cat= (registrocategoria as ArrayList<CategoriaEntity>).get(pos).codigo
                 nom=binding.txtNomPro.text.toString()
                 pre = binding.txtPrePro.text.toString().toDouble()
                 cant = binding.txtCantPro.text.toString().toInt()
@@ -105,7 +112,7 @@ class ProductoFragment : Fragment() {
                     false
                 }
                 //enviamos los objetos a la clase
-                objproducto.categoria= null
+                objproducto.categoria.codigo = cat
                 objproducto.nombre=nom
                 objproducto.precio=pre
                 objproducto.cantidad= cant.toLong()
@@ -114,29 +121,46 @@ class ProductoFragment : Fragment() {
                 RegistrarProducto(context,objproducto)
                 objutilidad.MostrarAlerta(context,"Registro Producto","Se registro El Producto"
                     ,false)
+
+                val fproducto = ProductoFragment()
+                ActualizarFragmento(fproducto)
             }
-            val fproducto=ProductoFragment()
-            ActualizarFragmento(fproducto)
+        }
+
+        binding.lstPro.setOnItemClickListener { adapterView, view, i, l ->
+            fila = i
+            binding.txtNomPro.setText("" + (registroproducto as ArrayList<ProductoEntity>).get(fila).codigo)
+            binding.txtCantPro.setText("" + (registroproducto as ArrayList<ProductoEntity>).get(fila).cantidad)
+            binding.txtPrePro.setText("" + (registroproducto as ArrayList<ProductoEntity>).get(fila).precio)
+            binding.cboCategoria.setSelection(i)
+            if ((registroproducto as ArrayList<ProductoEntity>).get(i).estado) {
+                binding.chkEstPro.isChecked = true
+            } else {
+                binding.chkEstPro.isChecked = false
             }
-
-            */
-
-
-        /*{
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                String selectedItemId = "custom_id_" + position;
-                // Puedes usar selectedItemId según tus necesidades
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                // Aquí puedes manejar el caso en que no se haya seleccionado nada
-            }
-        });
-
-    */
+        }
         return binding.root
+    }
+
+
+    fun cargarComboCategoria(context: Context){
+        val call=categoriaService!!.findAll()
+        call!!.enqueue(object : Callback<List<CategoriaEntity>?>{
+            override fun onResponse(
+                call: Call<List<CategoriaEntity>?>,
+                response: Response<List<CategoriaEntity>?>
+            ) {
+                if(response.isSuccessful){
+                    registrocategoria=response.body()
+                    binding.cboCategoria.adapter= CategoriaComboAdapter(context,registrocategoria)
+                }
+            }
+
+            override fun onFailure(call: Call<List<CategoriaEntity>?>, t: Throwable) {
+                Log.e("error: ",t.toString())
+            }
+
+        })
     }
 
     fun MostrarProducto(context: Context){
@@ -162,7 +186,7 @@ class ProductoFragment : Fragment() {
     fun RegistrarProducto(context: Context, c: ProductoEntity){
         val call=productoService!!.add(c)
         call!!.enqueue(object : Callback<ProductoEntity?> {
-            override fun onResponse(
+                override fun onResponse(
                 call: Call<ProductoEntity?>,
                 response: Response<ProductoEntity?>
             ) {
@@ -170,7 +194,6 @@ class ProductoFragment : Fragment() {
                     Log.e("mensaje:","Se registro")
                 }
             }
-
             override fun onFailure(call: Call<ProductoEntity?>, t: Throwable) {
                 Log.e("error: ",t.toString())
             }
