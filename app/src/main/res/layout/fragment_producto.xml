@@ -76,6 +76,12 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Estado:" />
+                <TextView
+                    android:id="@+id/txtCodPro"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:visibility="gone"/>
 
                 <CheckBox
                     android:id="@+id/chkEstPro"
