@@ -104,8 +104,7 @@ class ProductoFragment : Fragment() {
             }
             binding.cboCategoria.setSelection(indice)*/
             binding.cboCategoria.setSelection((registroproducto as ArrayList<ProductoEntity>).get(fila).categoria.codigo.toInt()-1)
-            cat_int = (registroproducto as ArrayList<ProductoEntity>).get(fila).categoria.codigo.toInt()
-            Log.e("ID", "Id de categoria "+ cat_int.toString() )
+
             if ((registroproducto as ArrayList<ProductoEntity>).get(i).estado) {
                 binding.chkEstPro.isChecked = true
             } else {
@@ -218,7 +217,16 @@ class ProductoFragment : Fragment() {
             ) {
                 if(response.isSuccessful){
                     registrocategoria=response.body()
-                    binding.cboCategoria.adapter= CategoriaComboAdapter(context,registrocategoria)
+                    var lista:ArrayList<CategoriaEntity> = ArrayList()
+                    for(c:CategoriaEntity in registrocategoria!!){
+                        if(c.estado == true){
+                            lista.add(c)
+                            binding.cboCategoria.adapter= CategoriaComboAdapter(context,lista)
+                        }
+                        else{
+
+                        }
+                    }
                 }
             }
 
