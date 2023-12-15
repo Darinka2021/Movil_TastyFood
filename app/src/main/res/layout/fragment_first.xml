@@ -8,20 +8,33 @@
     android:layout_alignParentBottom="true"
     tools:context=".FirstFragment">
 
+    <TextView
+        android:id="@+id/txtWelcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:text="greeting">
+    </TextView>
+
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:cardCornerRadius="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:cardCornerRadius="40dp"
         tools:ignore="MissingConstraints">
 
         <ImageView
             android:layout_width="300dp"
             android:layout_height="300dp"
-            android:src="@mipmap/tasty"/>
+            android:src="@mipmap/tasty" />
     </androidx.cardview.widget.CardView>
 
 
