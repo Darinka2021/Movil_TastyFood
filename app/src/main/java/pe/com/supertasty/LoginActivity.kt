@@ -8,6 +8,7 @@ import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
+import androidx.navigation.findNavController
 import pe.com.apptienditarest.util.Utilidad
 import pe.com.supertasty.Entity.CategoriaEntity
 import pe.com.supertasty.Entity.ClienteEntity
@@ -37,6 +38,13 @@ class LoginActivity : AppCompatActivity() {
         listado_clientes = ArrayList()
         clienteservicio= Api.clienteService
         registroCliente(this)
+
+        /*
+        binding.buttonRegistro.setOnClickListener {
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.aquinosequeva, RegistroFragment())
+            transaction.commit()
+        }*/
 
         binding.btnLogin.setOnClickListener {
             email = binding.tilEmail.editText?.text.toString().trim()

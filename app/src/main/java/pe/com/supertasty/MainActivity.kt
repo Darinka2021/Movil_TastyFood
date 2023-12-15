@@ -60,6 +60,13 @@ class MainActivity : AppCompatActivity() {
                     .commit()
                 true
             }
+            R.id.jmiRegistro -> {
+                val fcliente = RegistroFragment()
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.contenedor, fcliente)
+                    .commit()
+                true
+            }
             R.id.jmiSalir -> {
                 finish()
                 true
