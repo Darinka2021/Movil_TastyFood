@@ -7,25 +7,44 @@ import java.util.Date
 class DetallePedidoEntity {
     @SerializedName("codigo")
     @Expose
-    var codigo :Long =0
-
-    @SerializedName("fecha_registro")
-    @Expose
-    var fecha_registro: Date = Date()
+    var codigo: Long = 0
 
     @SerializedName("cantidad")
     @Expose
-    var cantidad:Long=0
+    var cantidad: Int = 0
 
     @SerializedName("precio")
     @Expose
-    var precio:Double=0.0
+    var precio: Double = 0.0
 
-    @SerializedName("preciototal")
+    @SerializedName("stotal")
     @Expose
-    var preciototal:Double=0.0
+    var stotal:Double=0.0
 
-    @SerializedName("estado")
+    @SerializedName("producto")
     @Expose
-    var estado:Boolean=false
+    var productos:ProductoEntity = ProductoEntity()
+
+    @SerializedName("pedido")
+    @Expose
+    var pedido:PedidoEntity = PedidoEntity()
+
+    constructor()
+    constructor(
+        codigo: Long,
+        cantidad: Int,
+        precio: Double,
+        stotal: Double,
+        productos: ProductoEntity,
+        pedido: PedidoEntity
+    ) {
+        this.codigo = codigo
+        this.cantidad = cantidad
+        this.precio = precio
+        this.stotal = stotal
+        this.productos = productos
+        this.pedido = pedido
+    }
+
+
 }
