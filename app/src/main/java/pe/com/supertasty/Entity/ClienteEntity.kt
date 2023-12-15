@@ -45,4 +45,5 @@ class ClienteEntity {
         this.pasword = pasword
         this.estado = estado
     }
+
 }
