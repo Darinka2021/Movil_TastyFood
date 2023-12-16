@@ -37,12 +37,12 @@ class DetallePedidoFragment : Fragment() {
         registrocategoria = ArrayList()
         categoriaService = Api.categoriaService
 
-        cargarComboCategoria(context)
+       //cargarComboCategoria(context)
 
         return binding.root
     }
 
-    fun cargarComboCategoria(context: Context){
+    /*fun cargarComboCategoria(context: Context){
         val call = categoriaService!!.findAll()
         call!!.enqueue(object : Callback<List<CategoriaEntity>?> {
             override fun onResponse(
@@ -65,4 +65,7 @@ class DetallePedidoFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    */
+
 }

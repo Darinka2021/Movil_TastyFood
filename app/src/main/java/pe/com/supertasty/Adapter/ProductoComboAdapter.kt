@@ -29,7 +29,6 @@ class ProductoComboAdapter (context: Context?, val lista: List<ProductoEntity>?)
         if (vista == null) {
             vista = layoutInflater.inflate(R.layout.elemento_spinner_producto, parent, false)
             val objproducto = getItem(position) as ProductoEntity
-
             val lblNom = vista!!.findViewById<TextView>(R.id.cboProducto)
             lblNom.text = objproducto.nombre
         }
