@@ -1,7 +1,7 @@
 package pe.com.supertasty
 
+import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -60,8 +60,23 @@ class MainActivity : AppCompatActivity() {
                     .commit()
                 true
             }
+            R.id.jmiDetallePedido -> {
+                val fcliente = DetallePedidoFragment()
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.contenedor, fcliente)
+                    .commit()
+                true
+            }
+
             R.id.jmiRegistro -> {
                 val fcliente = RegistroFragment()
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.contenedor, fcliente)
+                    .commit()
+                true
+            }
+            R.id.jmiPedido -> {
+                val fcliente = PedidoFragment()
                 supportFragmentManager.beginTransaction()
                     .replace(R.id.contenedor, fcliente)
                     .commit()

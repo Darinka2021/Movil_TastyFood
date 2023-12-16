@@ -17,6 +17,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:title="Cliente" />
+    <item
+        android:id="@+id/jmiPedido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Pedido" />
+    <item
+        android:id="@+id/jmiDetallePedido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="DetallePedido" />
+
 
     <item
         android:id="@+id/jmiRegistro"

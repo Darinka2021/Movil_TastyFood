@@ -2,49 +2,40 @@ package pe.com.supertasty.Entity
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import java.util.Date
 
-class DetallePedidoEntity {
-    @SerializedName("codigo")
-    @Expose
-    var codigo: Long = 0
-
-    @SerializedName("cantidad")
-    @Expose
-    var cantidad: Int = 0
+class DetallePedidoEntity {@SerializedName("codigo")
+@Expose
+var codigo: Long = 0
 
     @SerializedName("precio")
     @Expose
     var precio: Double = 0.0
 
-    @SerializedName("stotal")
+    @SerializedName("cantidad")
     @Expose
-    var stotal:Double=0.0
+    var cantidad: Long = 0
+
+    @SerializedName("categoria")
+    @Expose
+    var categoria: CategoriaEntity = CategoriaEntity()
 
     @SerializedName("producto")
     @Expose
-    var productos:ProductoEntity = ProductoEntity()
-
-    @SerializedName("pedido")
-    @Expose
-    var pedido:PedidoEntity = PedidoEntity()
+    var producto: ProductoEntity = ProductoEntity()
 
     constructor()
+
     constructor(
         codigo: Long,
-        cantidad: Int,
         precio: Double,
-        stotal: Double,
-        productos: ProductoEntity,
-        pedido: PedidoEntity
+        cantidad: Long,
+        categoria: CategoriaEntity,
+        producto: ProductoEntity
     ) {
         this.codigo = codigo
-        this.cantidad = cantidad
         this.precio = precio
-        this.stotal = stotal
-        this.productos = productos
-        this.pedido = pedido
+        this.cantidad = cantidad
+        this.categoria = categoria
+        this.producto = producto
     }
-
-
 }
