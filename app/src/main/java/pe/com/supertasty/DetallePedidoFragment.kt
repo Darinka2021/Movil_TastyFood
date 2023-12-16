@@ -13,7 +13,6 @@ import pe.com.supertasty.Entity.ProductoEntity
 import pe.com.supertasty.Service.CategoriaService
 import pe.com.supertasty.Service.ProductoService
 import pe.com.supertasty.databinding.FragmentDetallePedidoBinding
-import pe.com.supertasty.databinding.FragmentPedidoBinding
 import pe.com.supertasty.remote.Api
 import retrofit2.Call
 import retrofit2.Callback

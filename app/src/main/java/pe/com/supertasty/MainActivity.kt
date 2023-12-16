@@ -75,15 +75,14 @@ class MainActivity : AppCompatActivity() {
                     .commit()
                 true
             }
-            R.id.jmiPedido -> {
-                val fcliente = PedidoFragment()
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.contenedor, fcliente)
-                    .commit()
-                true
-            }
             R.id.jmiSalir -> {
                 finish()
+                true
+            }
+
+            R.id.jmiActivity -> {
+                val intent = Intent(this,DetallePedidoActivity::class.java)
+                startActivity(intent)
                 true
             }
             /*R.id.jmiCerrarSesion -> {

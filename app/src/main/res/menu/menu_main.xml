@@ -44,4 +44,8 @@
         android:orderInCategory="100"
         android:title="Salir"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/jmiActivity"
+        android:orderInCategory="100"
+        android:title="Activity" />
 </menu>

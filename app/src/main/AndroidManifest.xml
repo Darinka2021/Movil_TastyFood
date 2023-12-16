@@ -32,6 +32,12 @@
             android:theme="@style/Theme.SuperTasty">
 
         </activity>
+        <activity
+            android:name=".DetallePedidoActivity"
+            android:exported="true"
+            >
+
+        </activity>
     </application>
 
 </manifest>

@@ -255,6 +255,7 @@ class ProductoFragment : Fragment() {
         })
     }
 
+
     fun RegistrarProducto(context: Context, c: ProductoEntity) {
         val call = productoService!!.add(c)
         call!!.enqueue(object : Callback<ProductoEntity?> {

@@ -28,7 +28,9 @@ class DetallePedidoAdapter(context: Context?, val lista: List<DetallePedidoEntit
         var vista = convertView
 
         if (vista == null) {
-            vista = layoutInflater.inflate(R.layout.elemento_lista_pedido, parent, false)
+
+            /*
+            vista = layoutInflater.inflate(R.layout.ele, parent, false)
 
             val objproducto = getItem(position) as PedidoEntity
 
@@ -41,6 +43,7 @@ class DetallePedidoAdapter(context: Context?, val lista: List<DetallePedidoEntit
             lblPre.text = objproducto.precio.toString()
             lblCat.text = objproducto.categoria.nombre.toString()
             lblCant.text = objproducto.cantidad.toString()
+            */
         }
         return vista!!
     }
