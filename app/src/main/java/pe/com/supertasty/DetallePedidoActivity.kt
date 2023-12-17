@@ -7,12 +7,15 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import pe.com.supertasty.Adapter.CategoriaComboAdapter
 import pe.com.supertasty.Adapter.ProductoComboAdapter
 import pe.com.supertasty.Entity.CategoriaEntity
+import pe.com.supertasty.Entity.ClienteEntity
 import pe.com.supertasty.Entity.ProductoEntity
 import pe.com.supertasty.Service.CategoriaService
+import pe.com.supertasty.Service.ClienteService
 import pe.com.supertasty.Service.ProductoService
 import pe.com.supertasty.databinding.ActivityDetallepedidoBinding
 import pe.com.supertasty.databinding.ActivityLoginBinding
@@ -24,6 +27,17 @@ import retrofit2.Response
 class DetallePedidoActivity : AppCompatActivity() {
 
     private lateinit var binding:ActivityDetallepedidoBinding
+    //creramos un objeto de la entidad
+    private var objcliente= ClienteEntity()
+    //una variable para trabajar con el servicio
+    private var clienteService: ClienteService?=null
+    //lista de tipo ClienteEntity
+    private var registrocliente:List<ClienteEntity>?=null
+    //declaramos variables
+    var cod=0L
+    var nom=""
+
+
     private var productoService: ProductoService? = null
     private var categoriaService: CategoriaService? = null
     private var registroproductos: List<ProductoEntity>? = null
@@ -42,12 +56,20 @@ class DetallePedidoActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val context = getApplicationContext()
-
+        objcliente = ClienteEntity()
+        registrocliente=ArrayList()
         registroproductoxcategoria= ArrayList()
         registroproductos = ArrayList()
         registrocategoria = ArrayList()
         categoriaService = Api.categoriaService
         productoService = Api.productoService
+        clienteService= Api.clienteService
+
+
+
+        val idcliente = intent.getStringExtra("idCliente").toString().toLong()
+        Toast.makeText(this,"CLIENTE ACCEDIO: "+idcliente.toString(), Toast.LENGTH_LONG).show()
+        MostrarCliente(this, idcliente)
 
         cargarComboCategoria(context)
 
@@ -155,5 +177,33 @@ class DetallePedidoActivity : AppCompatActivity() {
             }
         }
         return cat
+    }
+    fun MostrarCliente(context: Context,idCliente:Long){
+        val call=clienteService!!.findAll()
+        call!!.enqueue(object : Callback<List<ClienteEntity>?> {
+            override fun onResponse(
+                call: Call<List<ClienteEntity>?>,
+                response: Response<List<ClienteEntity>?>
+            ) {
+                if(response.isSuccessful){
+                    registrocliente=response.body()
+
+                    for (c:ClienteEntity in registrocliente as ArrayList<ClienteEntity>){
+                        if (c.codigo == idCliente){
+                            objcliente = c
+                            Log.e("recuperacion", "onResponse: recuperamos al cliente con el idcliente: "+idCliente, )
+
+                            binding.txtClienteNombre.text=objcliente.correo
+                            binding.txtClienteId.text=objcliente.codigo.toString()
+                        }
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<List<ClienteEntity>?>, t: Throwable) {
+                Log.e("error: ",t.toString())
+            }
+
+        })
     }
 }

@@ -55,10 +55,7 @@ class LoginActivity : AppCompatActivity() {
                 objutilidades.MostrarAlerta(this,"Login Cliente","Ingrese un password valido",false)
             }
             else{
-                Log.e("CORREO", "el correo es: "+email.toString() )
-                Log.e("PASSWORD", "el PASSWORD es: "+password.toString() )
-                var idcli = validacionAcceso(this, listado_clientes as ArrayList<ClienteEntity>,email,password)
-
+                validacionAcceso(this, listado_clientes as ArrayList<ClienteEntity>,email,password)
             }
         }
     }
@@ -79,35 +76,41 @@ class LoginActivity : AppCompatActivity() {
             }
         })
     }
-    fun validacionAcceso(context: Context,listado:ArrayList<ClienteEntity>,correo:String,contrasenia: String):Long{
+    fun validacionAcceso(context: Context,listado:ArrayList<ClienteEntity>,correo:String,contrasenia: String){
+        val admin = "supertasty_admin2023@gmail.com"
+        val contra = "123456"
         for (c:ClienteEntity in listado_clientes as ArrayList<ClienteEntity>){
             if(c.correo.toString().trim() == correo.toString().trim() && c.pasword.toString().trim() == contrasenia.toString().trim()){
-                Log.e("CORREO CLIENTE", "el correo es identico"+correo+" == "+ c.correo, )
-                Log.e("PASSWORD CLIENTE", "el Password es identico"+correo+" == "+ c.correo, )
-                 cliente_autenticado = c.codigo
-                val admin = "supertasty_admin2023@gmail.com"
-                val contra = "123456"
+                Log.e("CORREO CLIENTE", "el correo es identico "+correo+" == "+ c.correo, )
+                Log.e("PASSWORD CLIENTE", "el Password es identico "+password+" == "+ c.pasword, )
+                Log.e("ID CLIENTE", "el id de cliente es: "+ c.codigo.toString())
                 if(c.correo.trim() == admin && c.pasword.trim() == contra){
+                    cliente_autenticado = c.codigo
+                    Log.e("IF :cliente_autenticado", "el id de admin es: "+ cliente_autenticado.toString())
                     siguientePage(cliente_autenticado.toString())
                 }
                 else {
+                    cliente_autenticado = c.codigo
+                    Log.e("ELSE :cliente_autenticado", "el id de cliente es: "+ cliente_autenticado.toString())
                     siguientePage2(cliente_autenticado.toString())
                 }
+
             }
             else{
                 cliente_autenticado = 0
             }
         }
-        return cliente_autenticado
     }
 
     fun siguientePage(idCliente:String) {
-            intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
+        intent = Intent(this, MainActivity::class.java)
+        intent.putExtra("idCliente",idCliente)
+        startActivity(intent)
+        finish()
     }
     fun siguientePage2(idCliente:String) {
             intent = Intent(this, DetallePedidoActivity::class.java)
+            intent.putExtra("idCliente",idCliente)
             startActivity(intent)
             finish()
     }
