@@ -78,7 +78,7 @@ class LoginActivity : AppCompatActivity() {
                }
             }
             override fun onFailure(call: Call<List<ClienteEntity>?>, t: Throwable) {
-                TODO("Not yet implemented")
+                Log.e("ERROR", "onFailure: "+t.toString(), )
             }
         })
     }
