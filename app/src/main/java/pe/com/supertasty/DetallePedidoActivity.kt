@@ -99,10 +99,11 @@ class DetallePedidoActivity : AppCompatActivity() {
         var lista6 = ArrayList<ProductoEntity>()
         for(p:ProductoEntity in listado!!){
             if(p.categoria.codigo.toString().trim().toLong()== idCategoria.toString().trim().toLong()){
-                lista6.add(p)
-                Log.e("PXC", "HAY PRODUCTO POR LA CATEGORIA", )
-                Log.e("PXC tamaño lista", lista6.size.toString(), )
-
+                if(p.estado == true){
+                    lista6.add(p)
+                    Log.e("PXC", "HAY PRODUCTO POR LA CATEGORIA", )
+                    Log.e("PXC tamaño lista", lista6.size.toString(), )
+                }
             }
         }
         binding.cboProducto.adapter = ProductoComboAdapter(context,lista6)
