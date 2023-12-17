@@ -86,9 +86,16 @@ class DetallePedidoActivity : AppCompatActivity() {
             ) {
                 if (response.isSuccessful) {
                     registrocategoria = response.body()
-                    binding.cboCategoria.adapter =
-                        CategoriaComboAdapter(context, registrocategoria)
+                    var lista:ArrayList<CategoriaEntity> = ArrayList()
+                    for(c:CategoriaEntity in registrocategoria!!){
+                        if(c.estado == true){
+                            lista.add(c)
+                            binding.cboCategoria.adapter= CategoriaComboAdapter(context,lista)
+                        }
+                        else{
 
+                        }
+                    }
                 }
             }
             override fun onFailure(call: Call<List<CategoriaEntity>?>, t: Throwable) {
