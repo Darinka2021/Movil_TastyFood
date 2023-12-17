@@ -17,4 +17,7 @@ interface DetallePedidoService {
     @GET("detallepedido/idcliente") //no se encuentra en el servicio
     fun findAllCustom(): Call<List<DetallePedidoEntity>?>?
 
+    @POST("detallepedido")
+    fun add(@Body c:DetallePedidoEntity):Call<DetallePedidoEntity?>?
+
 }

@@ -128,7 +128,7 @@
         app:layout_constraintTop_toBottomOf="@+id/mondongo">
 
         <Button
-            android:id="@+id/btnRegistrarPro"
+            android:id="@+id/btnRegistrarPed"
             style="@style/Widget.Material3.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
