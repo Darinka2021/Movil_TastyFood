@@ -14,4 +14,5 @@
     <color name="tasty_negro">#000000</color>
     <color name="tasty_blanco">#ffffff</color>
     <color name="tasty_rojo">#ff0000</color>
+    <color name="grey">#676767</color>
 </resources>

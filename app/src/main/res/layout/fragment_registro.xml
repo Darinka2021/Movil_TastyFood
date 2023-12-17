@@ -11,15 +11,28 @@
         android:layout_height="match_parent"
         tools:context=".ReggistroFragment">
         <TextView
-            android:id="@+id/titulo_cliente"
-            android:text="Registrar Cuenta"
+            android:id="@+id/tv_register_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textStyle="bold"
-            android:textSize="25dp"
-            android:textAlignment="center"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="10dp"
+            android:text="Crear Cuenta"
+            style="@style/Title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_register_sub_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:text="Registrarse en Nuestra App"
+            style="@style/SubTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_register_title" />
 
         <LinearLayout
             android:id="@+id/contenedor_campos_categoria"
@@ -28,23 +41,12 @@
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/titulo_cliente">
-
+            app:layout_constraintTop_toBottomOf="@id/tv_register_sub_title">
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_margin="10dp"
-                android:layout_height="wrap_content">
-                <EditText
-                    android:id="@+id/txtCorCli"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Ingresa el correo"
-                    android:inputType="text" />
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_margin="10dp"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/ic_account">
                 <EditText
                     android:id="@+id/txtNomCli"
                     android:layout_width="match_parent"
@@ -55,7 +57,21 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_margin="10dp"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/ic_email">
+                <EditText
+                    android:id="@+id/txtCorCli"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Ingresa el correo"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/ic_account">
                 <EditText
                     android:id="@+id/txtUserCli"
                     android:layout_width="match_parent"
@@ -66,7 +82,8 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_margin="10dp"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/ic_lock">
                 <EditText
                     android:id="@+id/txtPasscli"
                     android:layout_width="match_parent"
@@ -78,13 +95,14 @@
                 android:id="@+id/contenedor_botones_categoria"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/contenedor_campos_categoria">
 
                 <Button
                     android:id="@+id/btnRegistrarCli"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/tasty_negro"
                     android:text="REGISTRAR" />

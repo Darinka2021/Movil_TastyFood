@@ -70,7 +70,7 @@ class RegistroFragment : Fragment() {
             val contraseña = binding.txtPasscli.text.toString().trim()
             val estado = binding.chkEstCli.isChecked
 
-            if (nombre.isNotEmpty() && correo.isNotEmpty() && usuario.isNotEmpty() && contraseña.isNotEmpty()) {
+            if (validarCampos(nombre, correo, usuario, contraseña)) {
                 //capturando valores
                 objcliente.nombre = nombre
                 objcliente.correo = correo
@@ -94,20 +94,15 @@ class RegistroFragment : Fragment() {
                 // Actualizar o navegar al fragmento correspondiente, si es necesario
                 val fcliente = RegistroFragment()
                 ActualizarFragmento(fcliente)
-            } else {
+            } /*else {
                 objutilidad.MostrarAlerta(
                     context,
                     "Registro Cliente",
                     "Por favor, complete todos los campos",
                     false
                 )
-            }
+            }*/
         }
-
-
-
-
-
         return binding.root
     }
 
@@ -194,4 +189,37 @@ class RegistroFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+    private fun validarCampos(nombre: String, correo: String, usuario: String, contraseña: String): Boolean {
+        val context = requireContext()
+        var isValid = true
+        var errorMessage = ""
+
+        if (isValid && (!correo.contains('@') || correo.contains(' '))) {
+            errorMessage = "El correo no es válido"
+            isValid = false
+        }
+
+        if (nombre.any { it.isDigit() }) {
+            errorMessage = "Nombre no válido"
+            isValid = false
+        }
+
+        if (isValid && usuario.any { it.isLetterOrDigit().not() }) {
+            errorMessage = "El usuario no debe contener símbolos"
+            isValid = false
+        }
+        if (isValid && contraseña.length < 6) {
+            errorMessage = "La contraseña debe tener al menos 6 caracteres"
+            isValid = false
+        }
+
+        if (!isValid) {
+            objutilidad.MostrarAlerta(context, "Registro Cliente", errorMessage, false)
+        }
+
+        return isValid
+    }
+
+
+
 }
