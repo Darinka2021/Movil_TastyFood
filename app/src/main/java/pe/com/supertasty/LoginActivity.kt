@@ -39,12 +39,11 @@ class LoginActivity : AppCompatActivity() {
         clienteservicio= Api.clienteService
         registroCliente(this)
 
-        /*
         binding.buttonRegistro.setOnClickListener {
-            val transaction = supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.aquinosequeva, RegistroFragment())
-            transaction.commit()
-        }*/
+            intent = Intent(this, NewCuentaActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         binding.btnLogin.setOnClickListener {
             email = binding.tilEmail.editText?.text.toString().trim()
