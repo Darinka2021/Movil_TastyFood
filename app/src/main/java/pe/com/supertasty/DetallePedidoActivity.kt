@@ -29,8 +29,10 @@ class DetallePedidoActivity : AppCompatActivity() {
     private var registroproductos: List<ProductoEntity>? = null
     private var registrocategoria: List<CategoriaEntity>? = null
     private var registroproductoxcategoria: ArrayList<ProductoEntity> = ArrayList()
+    private var pdenCombo:ArrayList<ProductoEntity> = ArrayList()
     //variable
     private var cat = 1L
+    private var pro = 1L
     //posicion en combocategoria
     private var pos=1
 
@@ -53,6 +55,26 @@ class DetallePedidoActivity : AppCompatActivity() {
         registrosProducto(context,ic.toLong())
 
 
+
+        binding.cboProducto.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                pro = pdenCombo.get(position).codigo
+                if(pro > 0){
+                    var precio = pdenCombo.get(position).precio
+                    binding.txtIdproducto.text = pro.toString()
+                    binding.txtPrePed.text = precio.toString()
+                }
+                else{
+                    binding.txtIdproducto.text = ""
+                    binding.txtPrePed.text = ""
+                }
+
+            }
+            override fun onNothingSelected(parent: AdapterView<*>) {
+
+
+            }
+        }
     }
 
     private fun cargarComboCategoria(context:Context) {
@@ -85,13 +107,16 @@ class DetallePedidoActivity : AppCompatActivity() {
             ) {
                 if(response.isSuccessful){
                     registroproductos=response.body()
-                    lista_productos_x_categoria(context,registroproductos as ArrayList<ProductoEntity>?,idcat)
+                    pdenCombo=lista_productos_x_categoria(context,registroproductos as ArrayList<ProductoEntity>?,idcat)
+                }
+                else{
                 }
             }
             override fun onFailure(call: Call<List<ProductoEntity>?>, t: Throwable) {
                 Log.e("error: ",t.toString())
             }
         })
+
     }
 
 
