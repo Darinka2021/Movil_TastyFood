@@ -57,10 +57,7 @@ class LoginActivity : AppCompatActivity() {
             else{
                 Log.e("CORREO", "el correo es: "+email.toString() )
                 Log.e("PASSWORD", "el PASSWORD es: "+password.toString() )
-
                 var idcli = validacionAcceso(this, listado_clientes as ArrayList<ClienteEntity>,email,password)
-
-                Toast.makeText(this, " id: "+ idcli.toString(), Toast.LENGTH_SHORT).show()
 
             }
         }
@@ -88,7 +85,14 @@ class LoginActivity : AppCompatActivity() {
                 Log.e("CORREO CLIENTE", "el correo es identico"+correo+" == "+ c.correo, )
                 Log.e("PASSWORD CLIENTE", "el Password es identico"+correo+" == "+ c.correo, )
                  cliente_autenticado = c.codigo
-                siguientePage(cliente_autenticado.toString())
+                val admin = "supertasty_admin2023@gmail.com"
+                val contra = "123456"
+                if(c.correo.trim() == admin && c.pasword.trim() == contra){
+                    siguientePage(cliente_autenticado.toString())
+                }
+                else {
+                    siguientePage2(cliente_autenticado.toString())
+                }
             }
             else{
                 cliente_autenticado = 0
@@ -98,11 +102,14 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun siguientePage(idCliente:String) {
-        binding.btnLogin.setOnClickListener {
             intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
-        }
+    }
+    fun siguientePage2(idCliente:String) {
+            intent = Intent(this, DetallePedidoActivity::class.java)
+            startActivity(intent)
+            finish()
     }
 
 
