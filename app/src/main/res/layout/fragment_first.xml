@@ -17,8 +17,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:textAlignment="center"
-        android:textSize="30dp"
-        android:text="greeting">
+        android:textSize="28dp"
+        android:textStyle="italic"
+        android:text="¡Welcome Admin!">
     </TextView>
 
     <androidx.cardview.widget.CardView

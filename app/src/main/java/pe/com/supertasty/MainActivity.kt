@@ -72,28 +72,12 @@ class MainActivity : AppCompatActivity() {
                     .commit()
                 true
             }
-
-            R.id.jmiRegistro -> {
-                val fcliente = RegistroFragment()
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.contenedor, fcliente)
-                    .commit()
-                true
-            }
-            R.id.jmiSalir -> {
+            R.id.jmiCerrarSesion -> {
+                val intent = Intent(this,LoginActivity::class.java)
+                startActivity(intent)
                 finish()
                 true
             }
-
-            R.id.jmiActivity -> {
-                val intent = Intent(this,DetallePedidoActivity::class.java)
-                startActivity(intent)
-                true
-            }
-            /*R.id.jmiCerrarSesion -> {
-                logout()
-                true
-            }*/
             else -> super.onOptionsItemSelected(item)
         }
         return true
