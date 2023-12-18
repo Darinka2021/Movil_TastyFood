@@ -17,21 +17,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:title="Cliente" />
-    <item
-        android:id="@+id/jmiActivity"
-        android:orderInCategory="100"
-        android:title="Detalle Pedido" />
+
 
     <item
-        android:id="@+id/jmiRegistro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:title="Registro de Cuenta" />
-    <!--<item
         android:id="@+id/jmiCerrarSesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Cerra Sesion" />-->
+        android:title="Cerra Sesion" />
     <item
         android:id="@+id/jmiSalir"
         android:orderInCategory="100"
