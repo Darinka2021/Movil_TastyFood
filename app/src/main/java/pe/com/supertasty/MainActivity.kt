@@ -72,13 +72,6 @@ class MainActivity : AppCompatActivity() {
                     .commit()
                 true
             }
-            R.id.jmiDetallePedido -> {
-                val fcliente = DetallePedidoFragment()
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.contenedor, fcliente)
-                    .commit()
-                true
-            }
 
             R.id.jmiRegistro -> {
                 val fcliente = RegistroFragment()
