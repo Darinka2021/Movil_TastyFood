@@ -7,7 +7,6 @@
     android:padding="15dp"
     tools:context=".DetallePedidoActivity">
 
-
     <TextView
         android:id="@+id/title_producto"
         android:layout_width="match_parent"
@@ -130,28 +129,11 @@
         <Button
             android:id="@+id/btnRegistrarPed"
             style="@style/Widget.Material3.Button"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/tasty_negro"
             android:text="REGISTRAR" />
 
-        <Button
-            android:id="@+id/btnActualizarPro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/tasty_negro"
-            android:text="ACTUALIZAR" />
-
-        <Button
-            android:id="@+id/btnEliminarPro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@color/tasty_negro"
-            android:text="ELIMINAR" />
     </LinearLayout>
     <ListView
         android:id="@+id/lstPro"

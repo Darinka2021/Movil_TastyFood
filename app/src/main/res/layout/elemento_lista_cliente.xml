@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,40 +16,91 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/lblCodCli"
+                android:id="@+id/bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Codigo de Cliente"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/lblCodCli"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
                 android:text="lblCodCli" />
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Estado: "
+                android:textStyle="bold" />
+
+            <TextView
                 android:id="@+id/lblEstCli"
+                android:layout_marginLeft="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="lblEstCli" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/lblNomCli"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="lblNomCli" />
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Correo del Cliente: "
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/lblNomCli"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="lblNomCli" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre del Cliente: "
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/lblCorCli"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="lblCorCli" />
+            <TextView
+                android:id="@+id/lblCorCli"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="lblCorCli" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/lblUseCli"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="lblUseCli" />
-
-        <TextView
-            android:id="@+id/lblPasCli"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Usuario: "
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/lblUseCli"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="lblUseCli" />
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="lblPasCli" />
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contraseña: "
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/lblPasCli"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="lblPasCli" />
+        </LinearLayout>
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
