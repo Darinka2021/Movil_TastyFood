@@ -15,10 +15,12 @@
                 android:id="@+id/bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:text="Codigo de Producto: "
                 android:textStyle="bold" />
             <TextView
                 android:id="@+id/lblCodPro"
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -79,7 +81,7 @@
                 android:id="@+id/bold3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Precio Producto"
+                android:text="S/. "
                 android:textStyle="bold" />
             <TextView
                 android:id="@+id/lblPrePro"
